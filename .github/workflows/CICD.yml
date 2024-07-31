@@ -13,6 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+#### AWS Credentials Setting
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -20,9 +21,27 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
 
+#### ECR Login
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
+#### Docker Build Set Up
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
+
+#### Docker Pull, Tag, Push
+      - name: image job pull
+        run: |
+          docker pull 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:web_apache_0.8v
+
+      - name: image tag
+        run: |
+          docker tag 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:web_apache_0.8v 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:web_apache_0.9v
+
+      - name: image job Push
+        run: |
+          docker push 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:web_apache_0.9v
+
+
+
