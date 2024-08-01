@@ -1,4 +1,4 @@
-FROM jisu-web:0.1v_0722
+FROM jisu-web:latest
 
 EXPOSE 80
 
