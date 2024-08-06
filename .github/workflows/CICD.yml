@@ -63,7 +63,7 @@ jobs:
           git add ./SourceFile/jisu-was-deployment.yaml
           git commit -m "Update deployment image to jisu-was-${{ env.branch_name }}-${{ env.date_only }}"
           git pull --rebase origin main
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/jisukuk/source.git
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
 
