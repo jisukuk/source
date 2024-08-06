@@ -43,7 +43,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: bin/Dockerfile
+          file: DockerFile/Dockerfile
           push: true
           tags: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu-was:${{ env.branch_name }}-${{ env.timestamp }}
 
