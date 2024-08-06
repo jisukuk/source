@@ -46,12 +46,7 @@ jobs:
           file: bin/Dockerfile
           push: true
           tags: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu-was:${{ env.branch_name }}-${{ env.timestamp }}
-      
-      - name: image tag
-        run: |
-          docker tag 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:web_apache_0.8v 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:web_apache_0.9v
 
-      - name: image job Push
-        run: |
-          docker push 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:web_apache_0.9v
+
+  
 
