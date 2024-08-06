@@ -15,7 +15,7 @@ jobs:
 
 #### AWS Credentials Setting
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
           role-to-assume: arn:aws:iam::559394926122:role/github_action_ecr
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
