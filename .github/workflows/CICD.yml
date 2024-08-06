@@ -52,7 +52,7 @@ jobs:
 #### Update Deployment Yaml
       - name: Get current timestamp
         run: |
-          sed -i 's|image: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:.*|image: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-${{ env.branch_name }}-${{ env.date_only }}|' ./SourceFile/jisu-was-deployment.yaml   
+          sed -i 's|image: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:.*|image: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-${{ env.branch_name }}-${{ env.timestamp }}|' ./SourceFile/jisu-was-deployment.yaml   
 
 
 #### Commit and push Changes
