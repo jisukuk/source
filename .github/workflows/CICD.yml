@@ -36,14 +36,7 @@ jobs:
 
 #### 이미지 태그에 삽입할 Env 생성 (빌드 TimeStamp)
       - name: Get current timestamp
-        run: echo "timestamp=$(TZ=Asia/Seoul date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
-
-#### TimeStamp 변수에 8자리 (%Y%m%d)만 추출
-      - name: Extract date only from timestamp
-        run: |
-          Date_Only=${{ env.timestamp:0:8 }}
-          echo "Date_Only=$Date_Only" >> $GITHUB_ENV
-        shell: bash
+        run: echo "timestamp=$(TZ=Asia/Seoul date +'%Y%m%d')" >> $GITHUB_ENV
 
 #### 컨테이너 이미지 빌드 및 푸시
       - name: Build and push Docker image
