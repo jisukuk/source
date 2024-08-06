@@ -5,9 +5,8 @@ on:
     paths-ignore:
     - '.github/workflows/'
 
-permissions:
-  id-token: write   # Required for requesting the JWT
-  contents: read    # Required for actions/checkout
+permission:
+    id-token : write
   
 jobs:
   build-and-deploy:
