@@ -40,7 +40,9 @@ jobs:
 
 #### TimeStamp 변수에 8자리 (%Y%m%d)만 추출
       - name: Extract date only from timestamp
-        run: echo "Date_Only=${{ env.timestamp:0:8 }}" >> $GITHUB_ENV
+        run: |
+          Date_Only=${{ env.timestamp:0:8 }}
+          echo "Date_Only=$Date_Only" >> $GITHUB_ENV
         shell: bash
 
 #### 컨테이너 이미지 빌드 및 푸시
