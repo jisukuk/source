@@ -30,13 +30,17 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-#### 이미지 태그에 삽입할 Env 생성 (브랜치 이름)
+#### 이미지 태그에 삽입할 Env 생성 (Branch Name)
       - name: Get current branch name
         run: echo "branch_name=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
 
-#### 이미지 태그에 삽입할 Env 생성 (빌드 timestamp)
+#### 이미지 태그에 삽입할 Env 생성 (빌드 TimeStamp)
       - name: Get current timestamp
         run: echo "timestamp=$(TZ=Asia/Seoul date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+
+#### TimeStamp 변수에 8자리 (%Y%m%d)만 추출
+    - name: Extract date only from timestamp
+      run: echo "Date_Only=${{ env.timestamp:0:8 }}" >> $GITHUB_ENV
 
 #### 컨테이너 이미지 빌드 및 푸시
       - name: Build and push Docker image
@@ -46,7 +50,7 @@ jobs:
           file: DockerFile/Dockerfile
           push: true
           tags: |
-            559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-${{ env.branch_name }}-${{ env.timestamp }}
+            559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-${{ env.branch_name }}-${{ env.Date_Only }}
             559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:latest
 
 
