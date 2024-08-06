@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jisu-was
+  name: jisu-was
+  namespace: jisu-was
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jisu-was
+  template:
+    metadata:
+      labels:
+        app: jisu-was
+    spec:
+      serviceAccountName: s3-access-sa
+      containers:
+      - image: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-main-20240806
+        name: nginx
+        volumeMounts:
+        - name: was-pv
+          mountPath: /data
+      volumes:
+      - name: was-pv
+        persistentVolumeClaim:
+          claimName: was-claim
+
