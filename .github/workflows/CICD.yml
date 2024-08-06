@@ -24,7 +24,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_NAME }}
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
-          aws-region: ap-northeast-2
+          aws-region: ${{ secrets.AWS_REGION }}
 
 #### ECR Login
       - name: Login to Amazon ECR
@@ -51,7 +51,7 @@ jobs:
           file: DockerFile/Dockerfile
           push: true
           tags: |
-            559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-test2
+            559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-${{ env.branch_name }}-${{ env.timestamp }}
             559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:latest
 
 #### Update Deployment Yaml
@@ -66,7 +66,7 @@ jobs:
           git config --global user.name "jisukuk"
           git config --global user.email "jskuk@mz.co.kr"
           git add .
-          git commit -m "Update deployment image to jisu-was-test2"
+          git commit -m "Update deployment image to jisu-was-${{ env.branch_name }}-${{ env.timestamp }}-test"
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
