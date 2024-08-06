@@ -60,10 +60,9 @@ jobs:
         run:  |
           git config --global user.name "jisukuk"
           git config --global user.email "jskuk@mz.co.kr"
-          git add ./SourceFile/jisu-was-deployment.yaml
-          git commit -m "Update deployment image to jisu-was-${{ env.branch_name }}-${{ env.date_only }}"
-          git pull --rebase origin main
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/jisukuk/source.git
+          git add .
+          git commit -m "Update deployment image to jisu-was-${{ env.branch_name }}-${{ env.timestamp }}"
+          git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
 
