@@ -64,7 +64,7 @@ jobs:
           git commit -m "Update deployment image to jisu-was-${{ env.branch_name }}-${{ env.date_only }}"
           git pull --rebase origin main
           git push
-       env:
+        env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
 
 
