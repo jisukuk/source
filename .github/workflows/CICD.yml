@@ -45,7 +45,7 @@ jobs:
           context: .
           file: DockerFile/Dockerfile
           push: true
-          tags |
+          tags: |
             559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-${{ env.branch_name }}-${{ env.timestamp }}
             559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:latest
 
