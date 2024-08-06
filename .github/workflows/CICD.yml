@@ -49,6 +49,23 @@ jobs:
             559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-${{ env.branch_name }}-${{ env.timestamp }}
             559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:latest
 
+#### Update Deployment Yaml
+      - name: Get current timestamp
+        run: |
+          sed -i 's|image: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:.*|image: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-${{ env.branch_name }}-${{ env.date_only }}|' ./SourceFile/jisu-was-deployment.yaml   
 
-  
+
+#### Commit and push Changes
+      - name: Commit and push Changes
+        run:  |
+        git config --global user.name "jisukuk"
+        git config --global user.email "jskuk@mz.co.kr"
+        git add ./SourceFile/jisu-was-deployment.yaml
+        git commit -m "Update deployment image to jisu-was-${{ env.branch_name }}-${{ env.date_only }}"
+        git pull --rebase origin main
+        git push
+     env:
+        GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
+
+
 
