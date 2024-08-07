@@ -40,7 +40,7 @@ jobs:
 
 #### 이미지 태그에 삽입할 Env 생성 (빌드 TimeStamp)
       - name: Get current timestamp
-        run: echo "timestamp=$(TZ=Asia/Seoul date +'%Y%m%d')" >> $GITHUB_ENV
+        run: echo "timestamp=$(TZ=Asia/Seoul date +'%Y%m%d%s')" >> $GITHUB_ENV
 
 #### 컨테이너 이미지 빌드 및 푸시
       - name: Build and push Docker image
@@ -65,7 +65,7 @@ jobs:
           git config --global user.name "jisukuk"
           git config --global user.email "jskuk@mz.co.kr"
           git add .
-          git commit -m "Update deployment image to jisu-was-${{ env.branch_name }}-${{ env.timestamp }}1"
+          git commit -m "Update deployment image to jisu-was-${{ env.branch_name }}-${{ env.timestamp }}11"
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
