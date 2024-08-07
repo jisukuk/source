@@ -17,7 +17,7 @@ spec:
     spec:
       serviceAccountName: s3-access-sa
       containers:
-      - image: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-main-20240807-1
+      - image: 559394926122.dkr.ecr.ap-northeast-2.amazonaws.com/jisu:jisu-was-main-20240807
         name: nginx
         volumeMounts:
         - name: was-pv
