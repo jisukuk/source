@@ -67,5 +67,5 @@ jobs:
           git commit -m "Update deployment image to jisu-was-${{ env.branch_name }}-${{ env.timestamp }}"
           git push origin main
         env:
-          GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.G_TOKEN }} 
 
